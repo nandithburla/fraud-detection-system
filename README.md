@@ -4,38 +4,62 @@
 ![ML](https://img.shields.io/badge/Model-RandomForest-orange)
 ![Imbalance](https://img.shields.io/badge/Handling-SMOTE-red)
 ![Frontend](https://img.shields.io/badge/UI-Streamlit-green)
+[![Live App](https://img.shields.io/badge/Live%20App-Streamlit-green?logo=streamlit)](https://ml-fraud-detection-system.streamlit.app)
 
-An **end-to-end fraud detection system** built using real-world credit card transaction data.  
-The system handles extreme class imbalance (0.16% fraud cases), compares multiple models, and deploys the final model using **Streamlit**.
+---
+
+## 🚀 Live Deployment
+
+🔗 **Streamlit App:**  
+https://ml-fraud-detection-system.streamlit.app
+
+> 🚀 Achieved 0.92 precision on fraud class while keeping false positives to only 6 cases.
+
+---
+
+## 📸 App Preview
+
+![App Screenshot](app_preview.png)
+
+---
+
+## 📌 Project Overview
+
+An end-to-end fraud detection system built using real-world credit card transaction data.
+
+The system handles extreme class imbalance (0.16% fraud cases), compares multiple machine learning models, and deploys the final optimized model using Streamlit for interactive prediction.
+
+This project focuses on real-world deployment balance between fraud detection and customer experience.
 
 ---
 
 ## 🚀 Features
 
 - 🔎 Exploratory Data Analysis (EDA)
-- ⚖️ Extreme class imbalance handling using **SMOTE**
+- ⚖️ Extreme class imbalance handling using SMOTE
 - 🤖 Model comparison:
   - Logistic Regression
   - Random Forest
   - XGBoost
-- 🎯 Threshold tuning for better precision-recall tradeoff
+- 🎯 Threshold tuning for precision–recall tradeoff
 - 💰 Financial impact analysis
-- 🌐 Deployed interactive web app (Streamlit)
+- 🌐 Interactive web app (Streamlit)
 - 📦 Model serialization using Joblib
+- ☁️ Public cloud deployment (Streamlit Cloud)
 
 ---
 
-## 🧠 How the System Works
+## 🧠 System Architecture
 
 ### 1️⃣ Data Processing
 - Removed duplicates
-- Scaled `Amount` and `Time` separately using StandardScaler
-- PCA-based features (V1–V28) used directly
+- Scaled `Amount` and `Time` using StandardScaler
+- PCA features (V1–V28) used directly
 - Stratified train-test split
 
 ### 2️⃣ Imbalance Handling
-- Fraud ratio ≈ **0.16%**
-- Applied **SMOTE only on training data**
+- Fraud ratio ≈ 0.16%
+- Applied SMOTE only on training data to avoid data leakage
 
 ### 3️⃣ Model Training
 Compared:
@@ -45,11 +69,12 @@ Compared:
 
 ### 4️⃣ Final Model Selection
 
-**Random Forest was selected due to:**
+Random Forest was selected due to:
+
 - Very high precision (0.92)
 - Extremely low false positives (6 only)
 - Strong recall (0.77)
-- Best real-world deployment balance
+- Best balance for real-world deployment
 
 ---
 
@@ -60,11 +85,16 @@ Compared:
 - **False Positives:** 6  
 - **ROC-AUC:** ~0.88  
 
-### 💰 Financial Impact
+---
 
-- ~$8,900 fraud prevented (test set)
+## 💰 Business Impact
+
+- ~$8,900 fraud prevented (test set simulation)
 - Minimal customer inconvenience
-- Production-ready balance between detection and usability
+- Operationally efficient model
+- Production-ready fraud detection balance
+
+Unlike academic approaches focused only on recall, this system prioritizes precision to reduce false fraud alerts and improve customer trust.
 
 ---
 
@@ -78,7 +108,7 @@ fraud-detection-system/
 ├── fraud_detection_model.pkl  # Trained Random Forest model
 ├── amount_scaler.pkl          # Scaler for transaction amount
 ├── time_scaler.pkl            # Scaler for transaction time
-├── Fraud_Detection_System.ipynb
+├── FRAUD DETECTION SYSTEM.ipynb
 ├── requirements.txt
 └── README.md
 ```
@@ -88,17 +118,20 @@ fraud-detection-system/
 ## ▶️ How to Run Locally
 
 ### 1️⃣ Clone Repository
+
 ```bash
-git clone https://github.com/<your-username>/fraud-detection-system.git
+git clone https://github.com/nandithburla/fraud-detection-system.git
 cd fraud-detection-system
 ```
 
 ### 2️⃣ Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 3️⃣ Run Streamlit App
+
 ```bash
 streamlit run app.py
 ```
@@ -111,37 +144,26 @@ Then open:
 
 ## 🔍 Prediction Logic
 
-The model expects:
+The model expects input features:
+
 ```
 [Amount, Time, V1, V2, ..., V28]
 ```
 
-- `Amount` and `Time` are scaled
-- PCA components used as provided
-- Final input passed to Random Forest classifier
-
----
-
-## 📌 Business Perspective
-
-This system prioritizes:
-
-- High precision to reduce false fraud alerts
-- Minimal customer disruption
-- Operational efficiency
-- Practical deployability
-
-Unlike academic models focused only on recall, this system balances fraud detection with real-world constraints.
+- `Amount` and `Time` are scaled using saved scalers
+- PCA components are used as provided
+- Final processed input passed to Random Forest classifier
+- Outputs prediction label and fraud probability
 
 ---
 
 ## 🚧 Future Improvements
 
-- SHAP explainability
-- FastAPI REST API version
-- Cloud deployment
-- Real-time fraud scoring
+- SHAP model explainability
+- REST API version using FastAPI
+- Real-time fraud scoring simulation
 - Model monitoring pipeline
+- Docker containerization
 
 ---
 
