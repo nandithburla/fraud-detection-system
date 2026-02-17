@@ -11,7 +11,7 @@
 ## 🚀 Live Deployment
 
 🔗 **Streamlit App:**  
-https://ml-fraud-detection-system.streamlit.app
+https://mlfrauddetectionsystem.streamlit.app
 
 > 🚀 Achieved 0.92 precision on fraud class while keeping false positives to only 6 cases.
 
